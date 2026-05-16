@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIVA APP Powered by ALVA - Widget MVP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-900 flex flex-col md:flex-row gap-8 justify-center items-center min-h-screen font-sans antialiased text-slate-800 p-4">
+
+    <div class="w-[390px] h-[844px] bg-slate-950 rounded-[50px] shadow-2xl overflow-hidden flex flex-col border-[12px] border-slate-950 relative">
+        
+        <div id="pantalla-inicio" class="absolute inset-0 w-full h-full bg-cover bg-center flex flex-col justify-between p-5 transition-all duration-300 ease-in-out transform scale-100 opacity-100" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=390&auto=format&fit=crop');">
+            
+            <div class="flex justify-between items-center text-white text-xs font-semibold px-2">
+                <span>12:28 📱</span>
+                <div class="flex items-center gap-1.5">
+                    <span class="text-[9px] bg-lime-500 font-bold px-1.5 py-0.2 rounded text-slate-950">VIVA ZERO</span>
+                    <i data-lucide="battery" class="w-4 h-4"></i>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/95 backdrop-blur-md rounded-3xl p-4 text-white border border-white/10 shadow-2xl my-auto transform hover:scale-[1.01] transition-transform">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2 h-2 bg-lime-400 rounded-full animate-ping"></span>
+                        <span class="text-[10px] font-black tracking-wider text-lime-400 uppercase">Generación Bonus</span>
+                    </div>
+                    <span class="bg-lime-500 text-slate-950 text-[9px] font-black px-2 py-0.5 rounded-full uppercase">
+                        Zero Rating 🌐
+                    </span>
+                </div>
+
+                <div class="flex items-center justify-between my-3">
+                    <div>
+                        <h3 class="text-2xl font-black text-white">
+                            Racha: <span class="text-lime-400">4 Días</span> 🔥
+                        </h3>
+                        <p class="text-[11px] text-slate-300 mt-0.5">Abre la app hoy y mantén tus beneficios Élite activos.</p>
+                    </div>
+                    <div class="bg-white/5 p-2 rounded-xl text-center min-w-[75px] border border-white/10">
+                        <span class="text-[8px] text-slate-400 block uppercase font-bold">Tu saldo</span>
+                        <span class="text-xs font-black text-amber-400">335 Pts</span>
+                    </div>
+                </div>
+
+                <button onclick="abrirAppAlva()" class="w-full bg-lime-500 hover:bg-lime-400 text-slate-950 font-black text-xs py-3 rounded-xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i data-lucide="gift" class="w-4 h-4"></i> RECLAMAR PREMIOS DIARIOS
+                </button>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4 mb-2 px-2">
+                <div class="flex flex-col items-center opacity-70"><div class="w-12 h-12 bg-emerald-600 rounded-2xl flex items-center justify-center text-white"><i data-lucide="message-circle"></i></div></div>
+                <div class="flex flex-col items-center opacity-70"><div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white"><i data-lucide="facebook"></i></div></div>
+                <div class="flex flex-col items-center opacity-70"><div class="w-12 h-12 bg-gradient-to-tr from-yellow-500 to-purple-600 rounded-2xl flex items-center justify-center text-white"><i data-lucide="instagram"></i></div></div>
+                <div class="flex flex-col items-center"><div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center border-2 border-lime-400 shadow-lg"><span class="text-[10px] font-black text-lime-600">VIVA</span></div></div>
+            </div>
+        </div>
+
+        <div id="app-alva" class="absolute inset-0 w-full h-full bg-white flex flex-col justify-between transition-all duration-300 ease-in-out transform scale-50 opacity-0 pointer-events-none origin-center overflow-hidden">
+            
+            <div class="flex-1 overflow-y-auto no-scrollbar pb-4">
+                
+                <div class="px-4 pt-3 pb-2 bg-white">
+                    <div class="bg-slate-100 text-slate-600 rounded-full px-4 py-2 flex items-center justify-between text-xs border border-slate-200/60 shadow-inner">
+                        <span class="truncate pr-2 text-slate-500">Busca en Google o escribe una URL</span>
+                        <div class="flex items-center gap-2 text-slate-400">
+                            <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-4 py-2 flex justify-between items-center bg-white">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-xl font-black tracking-tight text-[#84CC16]">VIVA</span>
+                        <span class="text-xl font-bold tracking-tight text-[#A3E635]">APP</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-purple-900">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <i data-lucide="smile" class="w-5 h-5"></i>
+                        <i data-lucide="store" class="w-5 h-5"></i>
+                        
+                        <div class="bg-[#5B21B6] text-white px-2.5 py-1 rounded-full flex items-center gap-1 text-[11px] font-bold shadow-sm">
+                            <span class="w-3.5 h-3.5 bg-amber-400 rounded-full text-[9px] text-purple-900 flex items-center justify-center font-black">b</span>
+                            <span id="puntos-dinamicos">335 Pts</span>
+                        </div>
+                        
+                        <div class="w-7 h-7 bg-purple-200 rounded-full border border-purple-400 flex items-center justify-center text-purple-700"><i data-lucide="user" class="w-4 h-4"></i></div>
+                    </div>
+                </div>
+
+                <div class="px-4 py-1 flex items-center gap-2 text-purple-900 font-bold text-sm">
+                    <i data-lucide="store" class="w-4 h-4"></i> Market
+                </div>
+
+                <div class="px-4 py-2">
+                    <div class="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 rounded-xl p-3 text-white relative overflow-hidden shadow-sm h-[85px] flex flex-col justify-center">
+                        <span class="text-[9px] font-bold text-slate-900 bg-lime-300 px-1.5 py-0.2 rounded w-max uppercase">No naciste en ella... la elegiste</span>
+                        <h4 class="text-sm font-black tracking-tight mt-1 text-slate-950">generación <span class="text-purple-900">bonus</span></h4>
+                        <p class="text-[9px] font-bold text-white/90">PREMIOS, ACCESORIOS Y DESCUENTOS</p>
+                    </div>
+                </div>
+
+                <div class="px-4 flex gap-2 border-b border-slate-100">
+                    <div class="bg-[#A3E635]/20 text-purple-950 font-bold text-xs px-4 py-2 rounded-t-xl border-b-2 border-[#84CC16] flex items-center gap-1">
+                        <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i> Souvenirs
+                    </div>
+                </div>
+
+                <div id="notificacion-widget" class="mx-4 mt-3 bg-lime-100 border border-lime-300 rounded-2xl p-3 flex items-center justify-between animate-fade-in">
+                    <div class="flex items-center gap-2">
+                        <span class="text-base">🎉</span>
+                        <div>
+                            <h5 class="text-xs font-bold text-slate-900">¡Racha Validada desde el Widget!</h5>
+                            <p class="text-[10px] text-slate-600">Sumaste +100 puntos BONUS a tu balance por hoy.</p>
+                        </div>
+                    </div>
+                    <button onclick="cerrarAlerta()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-4 h-4"></i></button>
+                </div>
+
+                <div class="px-4 py-3 flex gap-2 justify-between items-center text-[11px]">
+                    <span class="bg-purple-100 text-purple-900 px-2.5 py-1 rounded-full font-bold flex items-center gap-1">Canjes <i data-lucide="shopping-bag" class="w-3 h-3"></i></span>
+                    <div class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 text-slate-700 font-medium text-center flex items-center justify-center gap-1">
+                        TIENDA ORURO <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                    </div>
+                    <span class="p-1 bg-slate-100 border border-slate-200 rounded-lg text-slate-600"><i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i></span>
+                </div>
+
+                <div class="mx-4 bg-purple-50 border border-purple-100 rounded-xl p-2.5 text-[10px] text-purple-900 flex gap-1.5 items-start">
+                    <i data-lucide="info" class="w-3.5 h-3.5 text-purple-600 shrink-0 mt-0.5"></i>
+                    <span>Solo puedes canjear hasta 5 artículos en el mes, tienes 0 canjeados.</span>
+                </div>
+
+                <div class="px-4 mt-3">
+                    <div class="bg-white border border-slate-200/80 rounded-2xl p-3 shadow-sm max-w-[170px] relative">
+                        <button class="absolute top-2 right-2 bg-[#5B21B6] text-white p-1 rounded-lg"><i data-lucide="plus" class="w-3 h-3"></i></button>
+                        
+                        <div class="w-full h-24 bg-slate-50 rounded-xl flex items-center justify-center mb-2">
+                            <div class="w-16 h-10 bg-purple-700 rounded-lg flex items-center justify-center text-[9px] font-black text-lime-400 border border-white shadow-sm">bonus</div>
+                        </div>
+
+                        <h4 class="text-[10px] font-black text-slate-800 uppercase tracking-tight">TAPA SOL BONUS</h4>
+                        
+                        <div class="mt-2 flex justify-between items-center bg-[#5B21B6] text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-max ml-auto">
+                            <span>9200</span>
+                            <span class="w-3 h-3 bg-amber-400 rounded-full text-[7px] text-purple-900 flex items-center justify-center font-black ml-1">b</span>
+                        </div>
+                        
+                        <div class="mt-2 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                            <div id="progress-bar" class="bg-[#84CC16] h-full rounded-full transition-all duration-1000" style="width: 3.6%;"></div>
+                        </div>
+                        <div class="text-[9px] text-center text-slate-500 font-bold mt-1">
+                            <span id="puntos-progreso">335</span>/9200
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-[#F4FCE3] border-t border-[#D9F99D] px-4 py-3 flex justify-between items-center shadow-[0_-4px_10px_rgba(0,0,0,0.02)]">
+                <div class="flex items-center gap-2 text-purple-950 font-black text-xs">
+                    <div class="relative bg-amber-400 p-2 rounded-xl text-purple-950 shadow-sm"><i data-lucide="shopping-cart" class="w-4 h-4"></i><span class="absolute -top-1 -right-1 bg-orange-500 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span></div>
+                    <span>0 Puntos</span>
+                </div>
+                <button class="bg-slate-300 text-slate-500 font-bold text-xs px-8 py-2.5 rounded-full cursor-not-allowed">
+                    Continuar
+                </button>
+            </div>
+
+            <nav class="bg-white px-6 py-2 flex justify-between items-end text-slate-500 text-[10px] pb-3 shadow-[0_-2px_10px_rgba(0,0,0,0.05)] pb-safe">
+                <!-- Home Activo -->
+                <button onclick="resetDemo()" class="flex flex-col items-center text-[#5B21B6] gap-1 w-10 relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="invisible">Inicio</span>
+                    <div class="absolute -bottom-2 w-7 h-[3px] bg-[#5B21B6] rounded-full"></div>
+                </button>
+                <!-- Perfil -->
+                <button class="flex flex-col items-center gap-1 w-10">
+                    <i data-lucide="user" class="w-6 h-6 flex-shrink-0"></i>
+                    <span>Perfil</span>
+                </button>
+                <!-- VIVA -->
+                <button class="flex flex-col items-center gap-1 w-10">
+                    <div class="w-6 h-6 bg-[#5B21B6] rounded-full flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-white stroke-[3]"></i>
+                    </div>
+                    <span class="text-[#5B21B6]">VIVA</span>
+                </button>
+                <!-- Pestañas -->
+                <button class="flex flex-col items-center gap-1 w-12">
+                    <div class="w-6 h-6 border-2 border-slate-500 rounded flex items-center justify-center text-[11px] font-bold flex-shrink-0">2</div>
+                    <span>Pestañas</span>
+                </button>
+                <!-- Apps -->
+                <button class="flex flex-col items-center gap-1 w-10">
+                    <i data-lucide="layout-grid" class="w-6 h-6 flex-shrink-0"></i>
+                    <span>Apps</span>
+                </button>
+            </nav>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function abrirAppAlva() {
+            let inicio = document.getElementById('pantalla-inicio');
+            inicio.classList.remove('scale-100', 'opacity-100');
+            inicio.classList.add('scale-110', 'opacity-0', 'pointer-events-none');
+
+            let app = document.getElementById('app-alva');
+            app.classList.remove('scale-50', 'opacity-0', 'pointer-events-none');
+            app.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
+
+            // Simulación interactiva: Al entrar por el widget, tus puntos suben en tiempo real de 335 a 435!
+            setTimeout(() => {
+                document.getElementById('puntos-dinamicos').innerText = "435 Pts";
+                document.getElementById('puntos-progreso').innerText = "435";
+                document.getElementById('progress-bar').style.width = "4.7%";
+            }, 800);
+        }
+
+        function cerrarAlerta() {
+            document.getElementById('notificacion-widget').classList.add('hidden');
+        }
+
+        function resetDemo() {
+            let app = document.getElementById('app-alva');
+            app.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+            app.classList.add('scale-50', 'opacity-0', 'pointer-events-none');
+            
+            let inicio = document.getElementById('pantalla-inicio');
+            inicio.classList.remove('scale-110', 'opacity-0', 'pointer-events-none');
+            inicio.classList.add('scale-100', 'opacity-100');
+
+            document.getElementById('notificacion-widget').classList.remove('hidden');
+            
+            // Resetear contadores de la captura original
+            document.getElementById('puntos-dinamicos').innerText = "335 Pts";
+            document.getElementById('puntos-progreso').innerText = "335";
+            document.getElementById('progress-bar').style.width = "3.6%";
+        }
+    </script>
+</body>
+</html>
