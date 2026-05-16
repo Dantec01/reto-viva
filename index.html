@@ -13,9 +13,115 @@
 </head>
 <body class="bg-slate-900 flex flex-col md:flex-row gap-8 justify-center items-center min-h-screen font-sans antialiased text-slate-800 p-4">
 
+    <div class="bg-slate-800 p-5 rounded-3xl text-white max-w-xs shadow-xl border border-slate-700 z-50 hidden md:block">
+        <span class="text-[10px] bg-lime-500 text-slate-950 font-black px-2 py-0.5 rounded-full uppercase">Hackathon MVP</span>
+        <h3 class="font-bold text-lg text-white mt-2 mb-1">Simulador de Interfaz</h3>
+        <p class="text-xs text-slate-300 mb-4">Haz clic en el buscador interactivo o en el botón "VIVA App" para ver el efecto de zoom y abrir la aplicación de Alva.</p>
+        <button onclick="resetDemo()" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold text-xs py-2.5 rounded-xl transition-all border border-slate-600">
+            🔄 Reiniciar Vista
+        </button>
+    </div>
+
     <div class="w-[390px] h-[844px] bg-slate-950 rounded-[50px] shadow-2xl overflow-hidden flex flex-col border-[12px] border-slate-950 relative">
         
-        <div id="pantalla-inicio" class="absolute inset-0 w-full h-full bg-cover bg-center flex flex-col justify-between transition-all duration-300 ease-in-out transform scale-100 opacity-100" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=390&auto=format&fit=crop');">
+        <div id="pantalla-inicio" class="absolute inset-0 w-full h-full bg-cover bg-center flex flex-col transition-all duration-300 ease-in-out transform scale-100 opacity-100 p-5" style="background-image: url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=390&auto=format&fit=crop');">
+            
+            <div class="flex justify-between items-center text-white text-xs font-semibold px-2 fixed top-5 left-5 right-5 z-50">
+                <span>12:28 📱</span>
+                <div class="flex items-center gap-1.5">
+                    <span class="text-[9px] bg-lime-500 font-bold px-1.5 py-0.2 rounded text-slate-950">VIVA ZERO</span>
+                    <i data-lucide="battery" class="w-4 h-4"></i>
+                </div>
+            </div>
+
+            <!-- Este es el Widget del ALVA que invita a entrar a la app -->
+            <div class="bg-slate-900/40 backdrop-blur-xl rounded-[28px] p-5 text-white border border-white/20 shadow-2xl mt-4 mx-2 transform hover:scale-[1.02] transition-transform cursor-pointer relative overflow-hidden" onclick="abrirAppAlva()">
+                <!-- Decorative glow -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-lime-500/30 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="flex justify-between items-center mb-3 relative z-10">
+                    <div class="flex items-center gap-2">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-lime-500"></span>
+                        </span>
+                        <span class="text-[11px] font-black tracking-widest text-white uppercase drop-shadow-md">Generación <span class="text-lime-400">Bonus</span></span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between my-4 relative z-10">
+                    <div>
+                        <h3 class="text-3xl font-black text-white drop-shadow-lg tracking-tight">
+                            Racha: <span class="text-lime-400">4 Días</span> 🔥
+                        </h3>
+                        <p class="text-xs text-white/80 mt-1 font-medium">Abre la app hoy y mantén tus beneficios Élite activos.</p>
+                    </div>
+                </div>
+
+                <button class="w-full bg-lime-500 text-slate-950 font-black text-sm py-3.5 rounded-xl shadow-[0_0_20px_rgba(132,204,22,0.4)] transition-all active:scale-95 flex items-center justify-center gap-2 relative z-10 pointer-events-none">
+                    <i data-lucide="gift" class="w-5 h-5"></i> RECLAMAR PREMIOS DIARIOS
+                </button>
+            </div>
+
+            <div class="mt-auto mb-6 px-2">
+                <!-- App Grid -->
+                <div class="grid grid-cols-4 gap-y-6 gap-x-4 mb-8">
+                    <!-- Fila 1 -->
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-[60px] h-[60px] bg-white rounded-2xl flex items-center justify-center shadow-lg"><img src="https://cdn-icons-png.flaticon.com/512/3128/3128304.png" class="w-[60%] h-[60%] object-contain" alt="Facebook"></div>
+                        <span class="text-white drop-shadow-md text-[11px] font-medium text-center">Facebook</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-[60px] h-[60px] bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="w-[60%] h-[60%] object-contain filter invert" alt="Instagram"></div>
+                        <span class="text-white drop-shadow-md text-[11px] font-medium text-center">Instagram</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-[60px] h-[60px] bg-[#25D366] rounded-2xl flex items-center justify-center shadow-lg"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-[60%] h-[60%] object-contain filter invert" alt="WhatsApp"></div>
+                        <span class="text-white drop-shadow-md text-[11px] font-medium text-center">WhatsApp</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-[60px] h-[60px] bg-black rounded-2xl flex items-center justify-center shadow-lg"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="w-[60%] h-[60%] object-contain filter invert" alt="TikTok"></div>
+                        <span class="text-white drop-shadow-md text-[11px] font-medium text-center">TikTok</span>
+                    </div>
+                    
+                    <!-- Fila 2 -->
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-[60px] h-[60px] bg-slate-100 rounded-2xl flex items-center justify-center shadow-lg"><img src="https://cdn-icons-png.flaticon.com/512/281/281769.png" class="w-[60%] h-[60%] object-contain" alt="Gmail"></div>
+                        <span class="text-white drop-shadow-md text-[11px] font-medium text-center">Gmail</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-[60px] h-[60px] bg-[#FF0000] rounded-2xl flex items-center justify-center shadow-lg"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="w-[60%] h-[60%] object-contain filter invert" alt="YouTube"></div>
+                        <span class="text-white drop-shadow-md text-[11px] font-medium text-center">YouTube</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity">
+                        <div class="w-[60px] h-[60px] bg-blue-500 rounded-2xl flex items-center justify-center shadow-lg"><img src="https://cdn-icons-png.flaticon.com/512/888/888856.png" class="w-[60%] h-[60%] object-contain filter invert" alt="Clima"></div>
+                        <span class="text-white drop-shadow-md text-[11px] font-medium text-center">Clima</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 cursor-pointer hover:scale-105 transition-transform" onclick="abrirAppAlva()">
+                        <div class="w-[60px] h-[60px] bg-white rounded-2xl flex items-center justify-center border-4 border-lime-400 shadow-xl overflow-hidden relative">
+                            <span class="text-xs font-black text-lime-600 tracking-tighter">VIVA</span>
+                            <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white flex items-center justify-center"><span class="text-white text-[8px] font-bold">1</span></div>
+                        </div>
+                        <span class="text-white drop-shadow-md text-[11px] font-black text-center text-lime-300">Mi VIVA</span>
+                    </div>
+                </div>
+
+                <!-- Dock/Barra inferior iOS style -->
+                <div class="bg-white/20 backdrop-blur-xl border border-white/20 rounded-[32px] p-4 flex justify-around items-center shadow-2xl mx-1">
+                    <div class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center shadow-md cursor-pointer"><i data-lucide="phone" class="w-6 h-6 text-white fill-white"></i></div>
+                    <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center shadow-md cursor-pointer"><i data-lucide="message-square" class="w-6 h-6 text-white fill-white"></i></div>
+                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-md cursor-pointer"><img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" class="w-[50%] h-[50%] object-contain" alt="Safari"></div>
+                    <div class="w-12 h-12 bg-slate-800 rounded-2xl flex items-center justify-center shadow-md cursor-pointer"><i data-lucide="camera" class="w-6 h-6 text-white"></i></div>
+                </div>
+            </div>
+            
+            <button onclick="resetDemo()" class="absolute top-12 left-4 bg-slate-900/50 p-2 rounded-full text-white backdrop-blur opacity-0 pointer-events-none" id="btn-reset">
+               <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+        <!-- Y esta es la App conectada que hicimos con el Salar de Uyuni -->
+        <div id="app-alva" class="absolute inset-0 w-full h-full bg-cover bg-center flex flex-col justify-between transition-all duration-300 ease-in-out transform scale-50 opacity-0 pointer-events-none origin-center" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=100&w=1200&auto=format&fit=crop');">
             
             <div class="flex-1 px-4 pt-2 pb-5 overflow-y-auto no-scrollbar relative flex flex-col">
                 <!-- Status bar placeholder -->
@@ -149,7 +255,7 @@
                     <span>Perfil</span>
                 </button>
                 <!-- ALVA -->
-                <button class="flex flex-col items-center gap-1 w-10 hover:text-emerald-700 transition-colors">
+                <button onclick="abrirBilletera()" class="flex flex-col items-center gap-1 w-10 hover:text-emerald-700 transition-colors">
                     <div class="w-6 h-6 bg-emerald-800 rounded-full flex items-center justify-center flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="m12 3-8 18h16z"/><path d="m8 14 8 0"/></svg>
                     </div>
@@ -168,144 +274,147 @@
             </nav>
         </div>
 
-        <div id="app-alva" class="absolute inset-0 w-full h-full bg-white flex flex-col justify-between transition-all duration-300 ease-in-out transform scale-50 opacity-0 pointer-events-none origin-center overflow-hidden">
+        <!-- Pantalla Billetera (ALVA Pay) -->
+        <div id="pantalla-billetera" class="absolute inset-0 w-full h-full bg-slate-50 flex flex-col justify-between transition-all duration-300 ease-in-out transform scale-50 opacity-0 pointer-events-none origin-center overflow-hidden">
             
-            <div class="flex-1 overflow-y-auto no-scrollbar pb-4">
-                
-                <div class="px-4 pt-3 pb-2 bg-white">
-                    <div class="bg-slate-100 text-slate-600 rounded-full px-4 py-2 flex items-center justify-between text-xs border border-slate-200/60 shadow-inner">
-                        <span class="truncate pr-2 text-slate-500">Busca en Google o escribe una URL</span>
-                        <div class="flex items-center gap-2 text-slate-400">
-                            <i data-lucide="more-vertical" class="w-4 h-4"></i>
+            <div class="flex-1 overflow-y-auto no-scrollbar relative flex flex-col">
+                <!-- Header Green Curve -->
+                <div class="bg-gradient-to-b from-emerald-500 to-emerald-600 px-5 pt-8 pb-16 rounded-b-[2rem] text-white relative z-0">
+                    <div class="flex justify-between items-center mb-4">
+                        <button class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-white/10 backdrop-blur-sm">
+                            <i data-lucide="settings" class="w-5 h-5 text-white"></i>
+                        </button>
+                        <div class="text-center">
+                            <p class="text-[11px] text-emerald-100">Buenas tardes</p>
+                            <h2 class="text-base font-bold">DanFenix 👋</h2>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-white/10 backdrop-blur-sm">
+                                <i data-lucide="headphones" class="w-4 h-4 text-white"></i>
+                            </button>
+                            <button class="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center bg-white/10 backdrop-blur-sm relative">
+                                <i data-lucide="bell" class="w-4 h-4 text-white"></i>
+                                <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-yellow-400 rounded-full border border-emerald-600 shadow-sm"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Main Card -->
+                    <div class="bg-gradient-to-br from-[#0F766E] to-[#064E3B] rounded-3xl p-5 shadow-2xl relative overflow-hidden border border-emerald-400/20 mt-4">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="flex items-center gap-1.5 mx-auto">
+                                <span class="text-xl font-black tracking-tight text-lime-400">ALVA</span>
+                                <span class="text-xl font-bold tracking-tight text-white">Pay</span>
+                            </div>
+                            <span class="absolute right-5 top-5 text-emerald-100 text-xs font-semibold">7998576</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <p class="text-emerald-100 text-xs mb-1">Tu saldo es:</p>
+                                <h3 class="text-3xl font-bold text-white tracking-tight">Bs 120,50</h3>
+                            </div>
+                            <!-- Toggle (similar to image) -->
+                            <div class="w-12 h-6 bg-emerald-400/40 rounded-full p-1 flex items-center shadow-inner cursor-pointer" onclick="this.querySelector('div').classList.toggle('ml-auto')">
+                                <div class="w-4 h-4 bg-white rounded-full ml-auto shadow"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="px-4 py-2 flex justify-between items-center bg-white">
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-xl font-black tracking-tight text-[#84CC16]">VIVA</span>
-                        <span class="text-xl font-bold tracking-tight text-[#A3E635]">APP</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-purple-900">
-                        <i data-lucide="home" class="w-5 h-5"></i>
-                        <i data-lucide="smile" class="w-5 h-5"></i>
-                        <i data-lucide="store" class="w-5 h-5"></i>
-                        
-                        <div class="bg-[#5B21B6] text-white px-2.5 py-1 rounded-full flex items-center gap-1 text-[11px] font-bold shadow-sm">
-                            <span class="w-3.5 h-3.5 bg-amber-400 rounded-full text-[9px] text-purple-900 flex items-center justify-center font-black">b</span>
-                            <span id="puntos-dinamicos">335 Pts</span>
+                <!-- Body overlapping header -->
+                <div class="-mt-10 px-5 relative z-10 flex-1 pb-6">
+                    
+                    <!-- Quick Actions Grid -->
+                    <div class="flex justify-between gap-3 mb-6">
+                        <div class="flex-1 bg-white rounded-2xl shadow-[0_5px_15px_rgba(4,120,87,0.08)] border border-slate-100 flex flex-col overflow-hidden pb-3 cursor-pointer hover:shadow-[0_8px_20px_rgba(4,120,87,0.12)] transition-shadow">
+                            <div class="bg-emerald-500 h-14 flex items-center justify-center text-white mb-2 rounded-b-xl mx-2 pt-1 relative overflow-hidden">
+                                <i data-lucide="wallet" class="w-6 h-6 relative z-10"></i>
+                                <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-400/50 rounded-full"></div>
+                            </div>
+                            <span class="text-emerald-800 text-[11px] font-bold text-center leading-tight">Cargar<br><span class="font-medium text-[9px] text-emerald-600/70">a ALVA Pay</span></span>
                         </div>
-                        
-                        <div class="w-7 h-7 bg-purple-200 rounded-full border border-purple-400 flex items-center justify-center text-purple-700"><i data-lucide="user" class="w-4 h-4"></i></div>
+                        <div class="flex-1 bg-white rounded-2xl shadow-[0_5px_15px_rgba(4,120,87,0.08)] border border-slate-100 flex flex-col overflow-hidden pb-3 cursor-pointer hover:shadow-[0_8px_20px_rgba(4,120,87,0.12)] transition-shadow">
+                            <div class="bg-emerald-500 h-14 flex items-center justify-center text-white mb-2 rounded-b-xl mx-2 pt-1 relative overflow-hidden">
+                                <i data-lucide="arrow-down-to-line" class="w-6 h-6 relative z-10"></i>
+                                <div class="absolute -top-2 -left-2 w-8 h-8 bg-emerald-400/50 rounded-full"></div>
+                            </div>
+                            <span class="text-emerald-800 text-[11px] font-bold text-center leading-tight">Retirar<br><span class="font-medium text-[9px] text-emerald-600/70">o Depositar</span></span>
+                        </div>
+                        <div class="flex-1 bg-white rounded-2xl shadow-[0_5px_15px_rgba(4,120,87,0.08)] border border-slate-100 flex flex-col overflow-hidden pb-3 cursor-pointer hover:shadow-[0_8px_20px_rgba(4,120,87,0.12)] transition-shadow">
+                            <div class="bg-emerald-500 h-14 flex items-center justify-center text-white mb-2 rounded-b-xl mx-2 pt-1 relative overflow-hidden">
+                                <i data-lucide="send" class="w-6 h-6 relative z-10"></i>
+                                <div class="absolute -bottom-2 left-2 w-6 h-6 bg-emerald-400/50 rounded-full"></div>
+                            </div>
+                            <span class="text-emerald-800 text-[11px] font-bold text-center leading-tight">Enviar<br><span class="font-medium text-[9px] text-emerald-600/70">a otro ALVA</span></span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="px-4 py-1 flex items-center gap-2 text-purple-900 font-bold text-sm">
-                    <i data-lucide="store" class="w-4 h-4"></i> Market
-                </div>
-
-                <div class="px-4 py-2">
-                    <div class="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 rounded-xl p-3 text-white relative overflow-hidden shadow-sm h-[85px] flex flex-col justify-center">
-                        <span class="text-[9px] font-bold text-slate-900 bg-lime-300 px-1.5 py-0.2 rounded w-max uppercase">No naciste en ella... la elegiste</span>
-                        <h4 class="text-sm font-black tracking-tight mt-1 text-slate-950">generación <span class="text-purple-900">bonus</span></h4>
-                        <p class="text-[9px] font-bold text-white/90">PREMIOS, ACCESORIOS Y DESCUENTOS</p>
+                    <!-- QR Actions -->
+                    <div class="flex gap-4 mb-8">
+                        <button class="flex-1 bg-amber-400 hover:bg-amber-500 text-slate-900 py-3 rounded-full font-black text-xs shadow-md transition-colors border border-amber-300">
+                            Cobrar QR
+                        </button>
+                        <button class="flex-1 bg-amber-400 hover:bg-amber-500 text-slate-900 py-3 rounded-full font-black text-xs shadow-md transition-colors border border-amber-300">
+                            Pagar QR
+                        </button>
                     </div>
-                </div>
 
-                <div class="px-4 flex gap-2 border-b border-slate-100">
-                    <div class="bg-[#A3E635]/20 text-purple-950 font-bold text-xs px-4 py-2 rounded-t-xl border-b-2 border-[#84CC16] flex items-center gap-1">
-                        <i data-lucide="shopping-cart" class="w-3.5 h-3.5"></i> Souvenirs
+                    <!-- Recargas y compra -->
+                    <h4 class="text-emerald-800 font-bold text-sm mb-3 px-1">Recargas y compra de paquetes</h4>
+                    <div class="flex gap-3 mb-8 px-1">
+                        <div class="flex-1 h-14 bg-white rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-slate-100 flex items-center justify-center relative cursor-pointer active:scale-95 transition-transform">
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-200 text-amber-900 text-[8px] font-bold px-2 py-0.5 rounded-full border border-amber-300 z-10">Nuevo</span>
+                            <div class="text-blue-500 font-bold italic text-sm">entel</div>
+                        </div>
+                        <div class="flex-1 h-14 bg-white rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-slate-100 flex items-center justify-center relative cursor-pointer active:scale-95 transition-transform">
+                            <span class="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-200 text-amber-900 text-[8px] font-bold px-2 py-0.5 rounded-full border border-amber-300 z-10">Nuevo</span>
+                            <div class="text-[#00377B] font-black text-xl tracking-tighter">tigo</div>
+                        </div>
+                        <div class="flex-1 h-14 bg-white rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-emerald-200 flex items-center justify-center relative overflow-hidden cursor-pointer active:scale-95 transition-transform">
+                            <div class="absolute inset-0 bg-lime-50/50"></div>
+                            <div class="text-lime-500 font-black text-xl tracking-tighter relative z-10">VIVA</div>
+                        </div>
                     </div>
-                </div>
 
-                <div id="notificacion-widget" class="mx-4 mt-3 bg-lime-100 border border-lime-300 rounded-2xl p-3 flex items-center justify-between animate-fade-in">
-                    <div class="flex items-center gap-2">
-                        <span class="text-base">🎉</span>
+                    <h4 class="text-emerald-800 font-bold text-sm mb-2 px-1">Últimas novedades</h4>
+                    <div class="bg-white rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-slate-100 p-4 flex gap-3 items-center mb-6">
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
+                            <i data-lucide="ticket" class="w-6 h-6"></i>
+                        </div>
                         <div>
-                            <h5 class="text-xs font-bold text-slate-900">¡Racha Validada desde el Widget!</h5>
-                            <p class="text-[10px] text-slate-600">Sumaste +100 puntos BONUS a tu balance por hoy.</p>
-                        </div>
-                    </div>
-                    <button onclick="cerrarAlerta()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-4 h-4"></i></button>
-                </div>
-
-                <div class="px-4 py-3 flex gap-2 justify-between items-center text-[11px]">
-                    <span class="bg-purple-100 text-purple-900 px-2.5 py-1 rounded-full font-bold flex items-center gap-1">Canjes <i data-lucide="shopping-bag" class="w-3 h-3"></i></span>
-                    <div class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 text-slate-700 font-medium text-center flex items-center justify-center gap-1">
-                        TIENDA ORURO <i data-lucide="chevron-down" class="w-3 h-3"></i>
-                    </div>
-                    <span class="p-1 bg-slate-100 border border-slate-200 rounded-lg text-slate-600"><i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i></span>
-                </div>
-
-                <div class="mx-4 bg-purple-50 border border-purple-100 rounded-xl p-2.5 text-[10px] text-purple-900 flex gap-1.5 items-start">
-                    <i data-lucide="info" class="w-3.5 h-3.5 text-purple-600 shrink-0 mt-0.5"></i>
-                    <span>Solo puedes canjear hasta 5 artículos en el mes, tienes 0 canjeados.</span>
-                </div>
-
-                <div class="px-4 mt-3">
-                    <div class="bg-white border border-slate-200/80 rounded-2xl p-3 shadow-sm max-w-[170px] relative">
-                        <button class="absolute top-2 right-2 bg-[#5B21B6] text-white p-1 rounded-lg"><i data-lucide="plus" class="w-3 h-3"></i></button>
-                        
-                        <div class="w-full h-24 bg-slate-50 rounded-xl flex items-center justify-center mb-2">
-                            <div class="w-16 h-10 bg-purple-700 rounded-lg flex items-center justify-center text-[9px] font-black text-lime-400 border border-white shadow-sm">bonus</div>
-                        </div>
-
-                        <h4 class="text-[10px] font-black text-slate-800 uppercase tracking-tight">TAPA SOL BONUS</h4>
-                        
-                        <div class="mt-2 flex justify-between items-center bg-[#5B21B6] text-white text-[10px] font-bold px-2 py-0.5 rounded-full w-max ml-auto">
-                            <span>9200</span>
-                            <span class="w-3 h-3 bg-amber-400 rounded-full text-[7px] text-purple-900 flex items-center justify-center font-black ml-1">b</span>
-                        </div>
-                        
-                        <div class="mt-2 bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                            <div id="progress-bar" class="bg-[#84CC16] h-full rounded-full transition-all duration-1000" style="width: 3.6%;"></div>
-                        </div>
-                        <div class="text-[9px] text-center text-slate-500 font-bold mt-1">
-                            <span id="puntos-progreso">335</span>/9200
+                            <h5 class="text-slate-800 font-bold text-xs">Gana entradas con ALVA</h5>
+                            <p class="text-slate-500 text-[10px] mt-0.5">Paga tus facturas y participa.</p>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <div class="bg-[#F4FCE3] border-t border-[#D9F99D] px-4 py-3 flex justify-between items-center shadow-[0_-4px_10px_rgba(0,0,0,0.02)]">
-                <div class="flex items-center gap-2 text-purple-950 font-black text-xs">
-                    <div class="relative bg-amber-400 p-2 rounded-xl text-purple-950 shadow-sm"><i data-lucide="shopping-cart" class="w-4 h-4"></i><span class="absolute -top-1 -right-1 bg-orange-500 text-white text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span></div>
-                    <span>0 Puntos</span>
-                </div>
-                <button class="bg-slate-300 text-slate-500 font-bold text-xs px-8 py-2.5 rounded-full cursor-not-allowed">
-                    Continuar
+            <nav class="bg-white px-6 py-2 flex justify-between items-end text-slate-400 text-[10px] pb-3 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.08)] pb-safe relative z-20">
+                <!-- Home -->
+                <button onclick="volverAHome()" class="flex flex-col items-center gap-1 w-10 hover:text-emerald-600 transition-colors">
+                    <i data-lucide="home" class="w-6 h-6 flex-shrink-0"></i>
+                    <span>Inicio</span>
                 </button>
-            </div>
-
-            <nav class="bg-[#212121] px-6 py-2 flex justify-between items-end text-neutral-300 text-[10px] pb-3 shadow-[0_-2px_10px_rgba(0,0,0,0.3)] pb-safe">
-                <!-- Home Activo -->
-                <button onclick="resetDemo()" class="flex flex-col items-center text-[#10B981] gap-1 w-10 relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span class="invisible">Inicio</span>
-                    <div class="absolute -bottom-2 w-7 h-[3px] bg-[#10B981] rounded-full"></div>
+                <!-- Movimientos -->
+                <button class="flex flex-col items-center gap-1 w-14 hover:text-emerald-600 transition-colors relative">
+                    <i data-lucide="receipt" class="w-6 h-6 flex-shrink-0"></i>
+                    <span class="absolute top-0 right-3 w-2 h-2 bg-red-400 rounded-full border border-white"></span>
+                    <span>Movimientos</span>
                 </button>
-                <!-- Perfil -->
-                <button class="flex flex-col items-center gap-1 w-10 hover:text-white transition-colors">
-                    <i data-lucide="user" class="w-6 h-6 flex-shrink-0"></i>
-                    <span>Perfil</span>
-                </button>
-                <!-- ALVA -->
-                <button class="flex flex-col items-center gap-1 w-10 hover:text-white transition-colors">
-                    <div class="w-6 h-6 bg-[#10B981] rounded-full flex items-center justify-center flex-shrink-0">
+                <!-- ALVA (Active) -->
+                <button class="flex flex-col items-center text-emerald-700 gap-1 w-14 relative">
+                    <div class="w-6 h-6 bg-emerald-800 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="m12 3-8 18h16z"/><path d="m8 14 8 0"/></svg>
                     </div>
-                    <span>ALVA</span>
+                    <span>ALVA Pay</span>
+                    <div class="absolute -bottom-2 w-7 h-[3px] bg-emerald-700 rounded-full"></div>
                 </button>
-                <!-- Pestañas -->
-                <button class="flex flex-col items-center gap-1 w-12 hover:text-white transition-colors">
-                    <div class="w-6 h-6 border-2 border-neutral-300 rounded flex items-center justify-center text-[11px] font-bold flex-shrink-0">1</div>
-                    <span>Pestañas</span>
-                </button>
-                <!-- Apps -->
-                <button class="flex flex-col items-center gap-1 w-10 hover:text-white transition-colors">
-                    <i data-lucide="layout-grid" class="w-6 h-6 flex-shrink-0"></i>
-                    <span>Apps</span>
+                <!-- Negocio -->
+                <button class="flex flex-col items-center gap-1 w-12 hover:text-emerald-600 transition-colors relative">
+                    <i data-lucide="store" class="w-6 h-6 flex-shrink-0"></i>
+                    <span class="absolute -top-1 -right-2 bg-amber-200 text-amber-900 text-[8px] font-bold px-1.5 py-0.5 rounded-full border border-amber-300">Nuevo</span>
+                    <span>Negocio</span>
                 </button>
             </nav>
         </div>
@@ -332,6 +441,26 @@
             }, 800);
         }
 
+        function abrirBilletera() {
+            let app = document.getElementById('app-alva');
+            app.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+            app.classList.add('scale-50', 'opacity-0', 'pointer-events-none');
+
+            let billetera = document.getElementById('pantalla-billetera');
+            billetera.classList.remove('scale-50', 'opacity-0', 'pointer-events-none', 'hidden');
+            billetera.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
+        }
+
+        function volverAHome() {
+            let billetera = document.getElementById('pantalla-billetera');
+            billetera.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+            billetera.classList.add('scale-50', 'opacity-0', 'pointer-events-none');
+
+            let app = document.getElementById('app-alva');
+            app.classList.remove('scale-50', 'opacity-0', 'pointer-events-none');
+            app.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
+        }
+
         function cerrarAlerta() {
             document.getElementById('notificacion-widget').classList.add('hidden');
         }
@@ -341,16 +470,18 @@
             app.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
             app.classList.add('scale-50', 'opacity-0', 'pointer-events-none');
             
+            let billetera = document.getElementById('pantalla-billetera');
+            billetera.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+            billetera.classList.add('scale-50', 'opacity-0', 'pointer-events-none');
+
             let inicio = document.getElementById('pantalla-inicio');
             inicio.classList.remove('scale-110', 'opacity-0', 'pointer-events-none');
             inicio.classList.add('scale-100', 'opacity-100');
-
-            document.getElementById('notificacion-widget').classList.remove('hidden');
             
-            // Resetear contadores de la captura original
-            document.getElementById('puntos-dinamicos').innerText = "335 Pts";
-            document.getElementById('puntos-progreso').innerText = "335";
-            document.getElementById('progress-bar').style.width = "3.6%";
+            // Retornar opacidad a cosas del inicio
+            setTimeout(() => {
+                 document.getElementById('btn-reset').classList.add('opacity-0', 'pointer-events-none');
+            }, 300);
         }
 
         // Lógica del buscador web simulado
