@@ -377,44 +377,54 @@
                         </div>
                     </div>
 
-                    <h4 class="text-emerald-800 font-bold text-sm mb-2 px-1">Últimas novedades</h4>
-                    <div class="bg-white rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-slate-100 p-4 flex gap-3 items-center mb-6">
-                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600">
-                            <i data-lucide="ticket" class="w-6 h-6"></i>
+                    <h4 class="text-emerald-800 font-bold text-sm mb-2 px-1">Opciones Billetera</h4>
+                    <div class="grid grid-cols-2 gap-3 mb-6 px-1">
+                        <div class="bg-white rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-slate-100 p-3 flex gap-2 items-center cursor-pointer hover:shadow-md transition-shadow">
+                            <div class="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 relative">
+                                <i data-lucide="receipt" class="w-4 h-4"></i>
+                                <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-400 rounded-full border border-white"></span>
+                            </div>
+                            <span class="text-slate-800 font-bold text-[10px]">Movimientos</span>
                         </div>
-                        <div>
-                            <h5 class="text-slate-800 font-bold text-xs">Gana entradas con ALVA</h5>
-                            <p class="text-slate-500 text-[10px] mt-0.5">Paga tus facturas y participa.</p>
+                        <div class="bg-white rounded-2xl shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-slate-100 p-3 flex gap-2 items-center cursor-pointer hover:shadow-md transition-shadow relative overflow-hidden">
+                            <span class="absolute -top-3 -right-3 bg-amber-200 text-amber-900 text-[8px] font-bold px-1.5 py-0.5 rounded-full border border-amber-300 w-10 h-10 flex items-end justify-center pb-1">Nuevo</span>
+                            <div class="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600">
+                                <i data-lucide="store" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-slate-800 font-bold text-[10px] relative z-10">Negocio</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <nav class="bg-white px-6 py-2 flex justify-between items-end text-slate-400 text-[10px] pb-3 shadow-[0_-15px_30px_-5px_rgba(0,0,0,0.08)] pb-safe relative z-20">
+            <nav class="bg-white px-6 py-2 flex justify-between items-end text-slate-600 text-[10px] pb-3 shadow-[0_-2px_15px_rgba(0,0,0,0.08)] pb-safe relative z-20">
                 <!-- Home -->
-                <button onclick="volverAHome()" class="flex flex-col items-center gap-1 w-10 hover:text-emerald-600 transition-colors">
-                    <i data-lucide="home" class="w-6 h-6 flex-shrink-0"></i>
+                <button onclick="volverAHome()" class="flex flex-col items-center gap-1 w-10 hover:text-emerald-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                     <span>Inicio</span>
                 </button>
-                <!-- Movimientos -->
-                <button class="flex flex-col items-center gap-1 w-14 hover:text-emerald-600 transition-colors relative">
-                    <i data-lucide="receipt" class="w-6 h-6 flex-shrink-0"></i>
-                    <span class="absolute top-0 right-3 w-2 h-2 bg-red-400 rounded-full border border-white"></span>
-                    <span>Movimientos</span>
+                <!-- Perfil -->
+                <button class="flex flex-col items-center gap-1 w-10 hover:text-emerald-700 transition-colors">
+                    <i data-lucide="user" class="w-6 h-6 flex-shrink-0"></i>
+                    <span>Perfil</span>
                 </button>
                 <!-- ALVA (Active) -->
-                <button class="flex flex-col items-center text-emerald-700 gap-1 w-14 relative">
-                    <div class="w-6 h-6 bg-emerald-800 rounded-full flex items-center justify-center flex-shrink-0 mb-0.5">
+                <button class="flex flex-col items-center text-emerald-700 gap-1 w-10 relative">
+                    <div class="w-6 h-6 bg-emerald-800 rounded-full flex items-center justify-center flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5"><path d="m12 3-8 18h16z"/><path d="m8 14 8 0"/></svg>
                     </div>
-                    <span>ALVA Pay</span>
+                    <span>ALVA</span>
                     <div class="absolute -bottom-2 w-7 h-[3px] bg-emerald-700 rounded-full"></div>
                 </button>
-                <!-- Negocio -->
-                <button class="flex flex-col items-center gap-1 w-12 hover:text-emerald-600 transition-colors relative">
-                    <i data-lucide="store" class="w-6 h-6 flex-shrink-0"></i>
-                    <span class="absolute -top-1 -right-2 bg-amber-200 text-amber-900 text-[8px] font-bold px-1.5 py-0.5 rounded-full border border-amber-300">Nuevo</span>
-                    <span>Negocio</span>
+                <!-- Pestañas -->
+                <button class="flex flex-col items-center gap-1 w-12 hover:text-emerald-700 transition-colors">
+                    <div class="w-6 h-6 border-2 border-slate-600 rounded flex items-center justify-center text-[11px] font-bold flex-shrink-0">1</div>
+                    <span>Pestañas</span>
+                </button>
+                <!-- Apps -->
+                <button class="flex flex-col items-center gap-1 w-10 hover:text-emerald-700 transition-colors">
+                    <i data-lucide="layout-grid" class="w-6 h-6 flex-shrink-0"></i>
+                    <span>Apps</span>
                 </button>
             </nav>
         </div>
